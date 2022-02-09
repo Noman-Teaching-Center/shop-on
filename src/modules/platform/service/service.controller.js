@@ -35,10 +35,10 @@ const getServices = async (req, res) => {
 const getService = async (req, res) => {
 	try {
 		const id = req.params.id;
-		const service = await service.findOne({
+		const serviceData = await service.findOne({
 			where: { id },
 		});
-		res.status(200).send(service);
+		res.status(200).send(serviceData);
 	} catch (err) {
 		console.error(err);
 		res.status(500).send("Internal server error!");
