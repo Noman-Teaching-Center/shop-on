@@ -5,6 +5,8 @@ const {ServiceGuard} = require(path.join(process.cwd(), "src/modules/core/author
 const {Services} = require(path.join(process.cwd(), "src/modules/core/authorization/authorization.constants"));
 
 module.exports = (app) => {
+    app.route("/api/services/:id")
+        .get(AuthStrategy, ServiceGuard([Services.PLATFORM]), controller.getService);
     app.route("/api/services")
         .get(AuthStrategy, ServiceGuard([Services.PLATFORM]), controller.getServices);
 }
